@@ -20,7 +20,7 @@ $(call inherit-product, device/xiaomi/dior/device.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 
 # Inherit some common CM stuff (mini)
-$(call inherit-product, vendor/omni/config/common_full_phone.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
 
 # Product configuration
 PRODUCT_NAME := omni_dior
