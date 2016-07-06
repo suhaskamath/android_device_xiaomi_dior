@@ -1,1 +1,1 @@
-add_lunch_combo omni_dior-userdebug
+add_lunch_combo du_dior-userdebug
