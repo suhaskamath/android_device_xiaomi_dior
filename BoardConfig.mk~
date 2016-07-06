@@ -108,7 +108,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_dior
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
-TARGET_KERNEL_CROSS_COMPILE_PREFIX :=  arm-eabi- 
+TARGET_TOOLS_PREFIX := "arm-eabi-"  
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
 TARGET_KERNEL_CONFIG := dior_custom_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=dior androidboot.selinux=permissive
@@ -137,6 +137,16 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.dior
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+
+# Basic dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),userdebug)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+    endif
+  endif
+endif
 
 # SELinux
 include device/qcom/sepolicy/Android.mk
